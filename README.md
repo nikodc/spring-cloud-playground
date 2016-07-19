@@ -20,7 +20,7 @@ Este componente expone una API REST simple que consta tan solo con una operació
 GET http://<host>:<port>
 
 Como respuesta se obtiene un JSON con esta estructura:
-```json
+```
 {
   "requestId": <id del request>,
   "serviceIp": <IP correspondiente al host donde ejecuta el servicio>
@@ -34,7 +34,7 @@ Este componente también expone una API REST compuesta por solamente una operaci
 GET http://<host>:<port>
 
 La anterior operación selecciona una instancia del servicio "service" y la invoca. Como resultado, genera un JSON con esta estructura:
-```json
+```
 {
   "serviceResponse": {
     "requestId": <id del request>,
