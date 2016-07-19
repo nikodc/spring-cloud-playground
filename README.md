@@ -5,7 +5,7 @@ Otras herramientas utilizadas:
   * [Consul](http://consul.io): discovery service y config server
   * [Ribbon](https://github.com/Netflix/ribbon): load balancing
   * [Zuul](https://github.com/Netflix/zuul): frontend y routing
-  * [Docker](https://www.docker.com): infraestructur, containers donde corren los componentes
+  * [Docker](https://www.docker.com): infraestructura, containers donde corren los componentes
 
 ## Arquitectura
 El proyecto está compuesto por diversos módulos:
