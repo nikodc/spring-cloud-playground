@@ -17,7 +17,9 @@ El proyecto está compuesto por diversos módulos:
 
 Este componente expone una API REST simple que consta tan solo con una operación:
 
+```
 GET http://<host>:<port>
+```
 
 Como respuesta se obtiene un JSON con esta estructura:
 ```
@@ -31,7 +33,9 @@ Como respuesta se obtiene un JSON con esta estructura:
 
 Este componente también expone una API REST compuesta por solamente una operación:
 
+```
 GET http://<host>:<port>
+```
 
 La anterior operación selecciona una instancia del servicio "service" y la invoca. Como resultado, genera un JSON con esta estructura:
 ```
@@ -48,7 +52,7 @@ La respuesta incluye la IP del host donde corre el servicio "webapp" junto con l
 
 ## Pre-requisitos
 
-TODO
+*TODO*
 
 ## Build
 
@@ -72,4 +76,4 @@ Posteriormente, construir las imágenes Docker correspondientes a "service" y "w
 
 ## Ejecución
 
-TODO
+*TODO*
