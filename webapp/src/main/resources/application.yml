@@ -1,16 +1,5 @@
 spring:
-  application:
-    name: webapp
-  profiles:
-    active: prod
-
----
-
-spring:
   profiles: dev
-  cloud:
-    consul:
-      enabled: false
 application:
   serviceUrl: http://localhost:8081
 
@@ -18,17 +7,3 @@ application:
 
 spring:
   profiles: prod
-  cloud:
-    inetutils:
-      ignoredInterfaces:
-        - docker0
-        - veth.*
-    consul:
-      host: localhost
-      port: 8500
-      config:
-        format: yaml
-      discovery:
-        prefer-ip-address: true
-application:
-  serviceUrl: http://service
