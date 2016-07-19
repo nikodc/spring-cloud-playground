@@ -76,4 +76,25 @@ Posteriormente, construir las imágenes Docker correspondientes a "service" y "w
 
 ## Ejecución
 
-*TODO*
+Crear un contenedor "consul" (exponiendo el puerto 8500):
+
+```
+docker run -dti -p 8500:8500 --name consul consul agent -dev -ui -client 0.0.0.0
+```
+
+Entrar a <http://localhost:8500> y verificar que Consul esté funcionando.
+
+Crear dos instancias de "service" ("service1" y "service2", exponiendo los puertos 8081 y 8082 respectivamente):
+
+```
+docker run -dti -p 8081:8080 --name service1 --link consul:consul nikodc/service --server.port=8080 --spring.cloud.consul.host=consul --spring.cloud.consul.discovery.instance-id=service1
+docker run -dti -p 8082:8080 --name service2 --link consul:consul nikodc/service --server.port=8080 --spring.cloud.consul.host=consul --spring.cloud.consul.discovery.instance-id=service2
+```
+
+Crear un contenedor para "webapp" (exponiendo el puerto 8080):
+
+```
+docker run -dti -p 8080:8080 --name webapp --link consul:consul nikodc/webapp --server.port=8080 --spring.cloud.consul.host=consul --spring.cloud.consul.discovery.instance-id=webapp
+```
+
+Invocar <http://localhost:8080> y comprobar que "webapp" funciona correctamente. Hacerlo reiteradamente y verificar que la IP de "service" vaya rotando entras las que Docker asignó a "service1" y "service2".
