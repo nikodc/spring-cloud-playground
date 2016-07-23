@@ -34,14 +34,13 @@ public class Application {
 
     @RequestMapping(value = "/items", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<StorageServiceResponse> postItem(
+    public ResponseEntity<StorageServiceResponse> addItem(
             @RequestBody Item item) {
         try {
 
-            log.info("Saving item: {}", item);
+            log.info("Adding item: {}", item);
 
             item.setId(itemNumerator.incrementAndGet());
-
             items.add(item);
 
             StorageServiceResponse response = new StorageServiceResponse();
@@ -49,9 +48,33 @@ public class Application {
             response.setStorageServiceIp(NetworkUtils.getIpAddress());
 
             long delay = minDelay + new Double(Math.random() * (maxDelay - minDelay)).longValue();
-            log.info("Saving item after a {} ms delay", delay);
+            log.info("Adding item after a {} ms delay", delay);
             Thread.sleep(delay);
-            log.info("Item saved: {} ", item);
+            log.info("Item added: {} ", item);
+
+            return new ResponseEntity<>(response, HttpStatus.OK);
+
+        } catch (Exception e) {
+            log.error("Exception getting current host's IP address");
+            throw new RuntimeException(e);
+        }
+    }
+
+    @RequestMapping(value = "/items", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<StorageServiceResponse> findAllItems() {
+        try {
+
+            log.info("Finding all items");
+
+            StorageServiceResponse response = new StorageServiceResponse();
+            response.getItems().addAll(items);
+            response.setStorageServiceIp(NetworkUtils.getIpAddress());
+
+            long delay = minDelay + new Double(Math.random() * (maxDelay - minDelay)).longValue();
+            log.info("Finding all items after a {} ms delay", delay);
+            Thread.sleep(delay);
+            log.info("Items found: {} ", items);
 
             return new ResponseEntity<>(response, HttpStatus.OK);
 
