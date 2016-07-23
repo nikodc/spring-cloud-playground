@@ -3,7 +3,7 @@ package io.github.nikodc.services.write;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadServiceResponse {
+public class WriteServiceResponse {
 
     private List<Item> items;
 
@@ -11,7 +11,7 @@ public class ReadServiceResponse {
 
     private String storageServiceIp;
 
-    public ReadServiceResponse() {
+    public WriteServiceResponse() {
         this.items = new ArrayList<>();
     }
 
@@ -41,7 +41,7 @@ public class ReadServiceResponse {
 
     @Override
     public String toString() {
-        return "ReadServiceResponse{" +
+        return "WriteServiceResponse{" +
                 "items=" + items +
                 ", readServiceIp='" + readServiceIp + '\'' +
                 ", storageServiceIp='" + storageServiceIp + '\'' +

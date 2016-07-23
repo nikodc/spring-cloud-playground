@@ -10,10 +10,7 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -26,14 +23,15 @@ public class Application {
     @Autowired
     StorageServiceInvoker storageServiceInvoker;
 
-    @RequestMapping("/{db}/items")
+    @RequestMapping(value = "/{db}/items", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<ReadServiceResponse> index(
-            @PathVariable("db") String db) {
+    public ResponseEntity<WriteServiceResponse> index(
+            @PathVariable("db") String db,
+            @RequestBody Item item) {
 
-        StorageServiceResponse storageServiceResponse = callStorageService(db);
+        StorageServiceResponse storageServiceResponse = callStorageService(db, item);
 
-        ReadServiceResponse response = new ReadServiceResponse();
+        WriteServiceResponse response = new WriteServiceResponse();
         response.getItems().addAll(storageServiceResponse.getItems());
         response.setReadServiceIp(getIpAddress());
         response.setStorageServiceIp(storageServiceResponse.getStorageServiceIp());
@@ -50,8 +48,8 @@ public class Application {
         }
     }
 
-    private StorageServiceResponse callStorageService(String db) {
-        StorageServiceResponse response = storageServiceInvoker.getItems(db);
+    private StorageServiceResponse callStorageService(String db, Item item) {
+        StorageServiceResponse response = storageServiceInvoker.addItem(db, item);
         return response;
     }
 

@@ -25,8 +25,8 @@ public class HystrixStorageServiceInvoker implements StorageServiceInvoker {
     private String hystrixCommandName;
 
     @Override
-    public StorageServiceResponse getItems(String db) {
-        return new StorageServiceCommand(db).execute();
+    public StorageServiceResponse addItem(String db, Item item) {
+        return new StorageServiceCommand(db, item).execute();
     }
 
     private String getConcreteHystrixCommandName(String db) {
@@ -43,15 +43,18 @@ public class HystrixStorageServiceInvoker implements StorageServiceInvoker {
 
         private final String db;
 
-        public StorageServiceCommand(String db) {
+        private final Item item;
+
+        public StorageServiceCommand(String db, Item item) {
             super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("PlaygroundGroup"))
                     .andCommandKey(HystrixCommandKey.Factory.asKey(getConcreteHystrixCommandName(db))));
             this.db = db;
+            this.item = item;
         }
 
         @Override
         protected StorageServiceResponse run() {
-            return directStorageServiceInvoker.getItems(db);
+            return directStorageServiceInvoker.addItem(db, item);
         }
     }
 

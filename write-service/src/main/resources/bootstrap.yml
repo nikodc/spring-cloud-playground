@@ -1,6 +1,6 @@
 spring:
   application:
-    name: read-service
+    name: write-service
   profiles:
     active: prod
 

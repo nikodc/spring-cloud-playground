@@ -2,6 +2,6 @@ package io.github.nikodc.services.write;
 
 public interface StorageServiceInvoker {
 
-   StorageServiceResponse getItems(String db);
+   StorageServiceResponse addItem(String db, Item item);
 
 }

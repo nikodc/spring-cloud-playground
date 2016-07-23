@@ -23,11 +23,11 @@ public class DirectStorageServiceInvoker implements StorageServiceInvoker {
     private String storageServiceUrl;
 
     @Override
-    public StorageServiceResponse getItems(String db) {
+    public StorageServiceResponse addItem(String db, Item item) {
         String concreteStorageServiceUrl = getConcreteStorageServiceUrl(db);
 
-        StorageServiceResponse response = restTemplate.getForObject(concreteStorageServiceUrl,
-                StorageServiceResponse.class);
+        StorageServiceResponse response = restTemplate.postForObject(concreteStorageServiceUrl,
+                item, StorageServiceResponse.class);
         return response;
     }
 

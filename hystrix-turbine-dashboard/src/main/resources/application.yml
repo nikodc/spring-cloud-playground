@@ -1,5 +1,5 @@
 application:
-  clusters: read-service
+  clusters: read-service,write-service
 turbine:
   aggregator:
     clusterConfig: ${application.clusters}
