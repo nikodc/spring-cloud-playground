@@ -5,3 +5,8 @@ spring:
 
 spring:
   profiles: prod
+zuul:
+  ignoredServices: '*'
+  routes:
+    read-service: /read/**
+    write-service: /write/**
