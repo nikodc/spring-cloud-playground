@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.nikodc.spring-cloud-playground</groupId>
-    <artifactId>service</artifactId>
+    <artifactId>read-service</artifactId>
 
     <parent>
         <groupId>io.github.nikodc.spring-cloud-playground</groupId>
@@ -25,6 +25,10 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-consul-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -50,7 +54,7 @@
                 <version>0.4.11</version>
                 <configuration>
                     <baseImage>frolvlad/alpine-oraclejdk8:slim</baseImage>
-                    <imageName>nikodc/service</imageName>
+                    <imageName>nikodc/read-service</imageName>
                     <imageTags>
                         <imageTag>${project.version}</imageTag>
                         <imageTag>latest</imageTag>

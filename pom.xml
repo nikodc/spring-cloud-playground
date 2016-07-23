@@ -21,8 +21,10 @@
 
     <modules>
         <module>commons</module>
-        <module>service</module>
+        <module>storage-service</module>
+        <module>read-service</module>
         <module>webapp</module>
+        <module>hystrix-turbine-dashboard</module>
     </modules>
 
     <dependencyManagement>

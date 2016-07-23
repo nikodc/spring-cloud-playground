@@ -1,5 +1,5 @@
 application:
-  clusters: storage-service-db1, storage-service-db2, read-service, write-service
+  clusters: read-service
 turbine:
   aggregator:
     clusterConfig: ${application.clusters}

@@ -1,0 +1,9 @@
+spring:
+  profiles: dev
+application:
+  storageServiceUrl: http://localhost:9001/items
+
+---
+
+spring:
+  profiles: prod
