@@ -65,8 +65,19 @@ Crear un contenedor "consul" (exponiendo el puerto 8500 para la UI):
 ```
 docker run -dti -p 8500:8500 --name consul consul agent -dev -ui -client 0.0.0.0
 ```
+Entrar a <http://localhost:8500> y verificar que Consul esté funcionando. Si todo está en orden, enviar configuraciones centralizadas de las aplicaciones al K/V store de Consul:
 
-Entrar a <http://localhost:8500> y verificar que Consul esté funcionando.
+```
+> cd $WORKDIR/spring-cloud-playground/config
+> ./config2consul.sh
+```
+
+De ser necesario es posible modificar la ubicación de Consul pasando la URL base como parámetro:
+
+```
+> cd $WORKDIR/spring-cloud-playground/config
+> ./config2consul.sh http://localhost:1234
+```
 
 ### Servicios de Storage (storage-service)
 
