@@ -1,0 +1,7 @@
+spring:
+  profiles: dev
+
+---
+
+spring:
+  profiles: prod

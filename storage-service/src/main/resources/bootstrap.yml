@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: storage-service
+  profiles:
+    active: prod
+
+---
+
+spring:
+  profiles: dev
+  cloud:
+    consul:
+      enabled: false
+
+---
+
+spring:
+  profiles: prod
+  cloud:
+    inetutils:
+      ignoredInterfaces:
+        - docker0
+        - veth.*
+    consul:
+      host: localhost
+      port: 8500
+      config:
+        format: yaml
+      discovery:
+        prefer-ip-address: true
