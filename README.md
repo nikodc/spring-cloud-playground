@@ -101,7 +101,7 @@ Crear un contenedor "frontend" (exponiendo el puerto 8080):
 docker run -dti -p 8080:8080 --name frontend --link consul:consul nikodc/frontend --server.port=8080 --spring.cloud.consul.host=consul --spring.cloud.consul.discovery.instance-id=frontend
 ```
 
-### Dashboard de Hystrix/Turbine (hystrix-turbine-dashboard):
+### Dashboard de Hystrix/Turbine (hystrix-turbine-dashboard o htd):
 
 Crear un contenedor "hystrix-turbine-dashboard" (exponiendo el puerto 8090 para acceder a la webapp):
 
@@ -111,4 +111,13 @@ docker run -dti -p 8090:8080 --name htd --link consul:consul nikodc/htd --server
 
 ## Cómo usar?
 
-_TODO_
+URL's para realizar pruebas una vez que todo lo anterior haya sido configurado y se encuentren todos los contenedores en ejecución:
+  * Lectura de Items: <http://localhost:8080/read/{db1,db2}/items>
+  * Escritura de Items: <http://localhost:8080/write/{db1,db2}/items>
+  * Consul UI: <http://localhost:8500>
+  * Hystrix Dashboard: <http://localhost:8090/hystrix>
+  * Turbine stream - read-service: <http://&lt;ip-interna-del-container-htd&gt;:8080/turbine.stream?cluster=read-service> (usar IP interna del container "htd" sino no funciona)
+  * Turbine stream - write-service: <http://&lt;ip-interna-del-container-htd&gt;:8080/turbine.stream?cluster=read-service> (usar IP interna del container "htd" sino no funciona)
+  
+_TODO: completar con más detalles_
+_TODO: verificar problema con Turbine y necesidad de usar la IP interna del container "htd"_
