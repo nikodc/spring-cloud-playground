@@ -116,8 +116,7 @@ URL's para realizar pruebas una vez que todo lo anterior haya sido configurado y
   * Escritura de Items: <http://localhost:8080/write/{db1,db2}/items>
   * Consul UI: <http://localhost:8500>
   * Hystrix Dashboard: <http://localhost:8090/hystrix>
-  * Turbine stream - read-service: <http://&lt;ip-interna-del-container-htd&gt;:8080/turbine.stream?cluster=read-service> (usar IP interna del container "htd" sino no funciona)
-  * Turbine stream - write-service: <http://&lt;ip-interna-del-container-htd&gt;:8080/turbine.stream?cluster=read-service> (usar IP interna del container "htd" sino no funciona)
+  * Turbine stream - read-service: <http://ip-interna-del-container-htd:8080/turbine.stream?cluster=read-service> (usar IP interna del container "htd" sino no funciona)
+  * Turbine stream - write-service: <http://ip-interna-del-container-htd:8080/turbine.stream?cluster=read-service> (usar IP interna del container "htd" sino no funciona)
   
-_TODO: completar con más detalles_
-_TODO: verificar problema con Turbine y necesidad de usar la IP interna del container "htd"_
+_TODO: completar con más detalles, verificar problema con Turbine y necesidad de usar la IP interna del container "htd"_
