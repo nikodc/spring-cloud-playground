@@ -24,7 +24,7 @@
         <module>storage-service</module>
         <module>read-service</module>
         <module>write-service</module>
-        <module>webapp</module>
+        <module>frontend</module>
         <module>hystrix-turbine-dashboard</module>
     </modules>
 
