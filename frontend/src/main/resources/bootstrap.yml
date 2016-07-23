@@ -1,6 +1,6 @@
 spring:
   application:
-    name: webapp
+    name: frontend
   profiles:
     active: prod
 

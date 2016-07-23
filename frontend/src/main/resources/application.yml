@@ -1,7 +1,5 @@
 spring:
   profiles: dev
-application:
-  serviceUrl: http://localhost:8081
 
 ---
 
