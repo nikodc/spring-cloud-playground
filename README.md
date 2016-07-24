@@ -72,7 +72,7 @@ Entrar a <http://localhost:8500> y verificar que Consul esté funcionando. Si to
 > ./config2consul.sh
 ```
 
-De ser necesario es posible modificar la ubicación de Consul pasando la URL base como parámetro:
+De ser necesario, es posible modificar la ubicación de Consul pasando la URL base como parámetro:
 
 ```
 > cd $WORKDIR/spring-cloud-playground/config
